@@ -1,0 +1,29 @@
+﻿@page "/counter"
+
+<PageTitle>Counter</PageTitle>
+
+<MudText Typo="Typo.h3" GutterBottom="true">شمارنده</MudText>
+<MudText Class="mb-4">شمارنده: @currentCount</MudText>
+<MudButton Color="Color.Success"  Variant="Variant.Filled" @onclick="IncrementCount">کلیک کنید</MudButton>
+
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+}
+@code {
+    MudTheme MyCustomTheme = new MudTheme()
+        {
+            Typography = new Typography()
+            {
+                Default = new Default()
+                {
+                    FontFamily = new[] { "Vazir", }
+                }
+            }
+        };
+}
