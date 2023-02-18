@@ -1,12 +1,11 @@
 ﻿@inherits LayoutComponentBase
+@inject IJSRuntime JSRuntime;
 <MudRTLProvider RightToLeft="true">
     <MudThemeProvider Theme="mudThemeConfig" @bind-IsDarkMode="@_isDarkMode" />
     <MudDialogProvider />
     <MudSnackbarProvider />
-
-    <MudLayout>
-        @*<MudPaper Square="true" Class="d-flex justify-space-around">*@
-        <MudAppBar  Color="Color.Transparent" Dense="true" Elevation="1">
+    <MudLayout >
+        <MudAppBar Fixed="false" Color="Color.Transparent" Dense="false" Elevation="2">
             <MudHidden Breakpoint="Breakpoint.SmAndDown" Invert="true">
                 <MudIconButton OnClick="DrawerToggle" Icon="@Icons.Material.Outlined.Menu" />
                 <MudSpacer />
@@ -37,23 +36,23 @@
             </MudHidden>
             @*<MudTextField @bind-Value="SearchValue" Label="چی میخوای؟" Variant="Variant.Filled" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Primary" />*@
         </MudAppBar>
-        @* </MudPaper>*@
-        <MudDrawer @bind-Open="@_drawerOpen" Anchor="Anchor.Start" Elevation="1" Variant="@DrawerVariant.Temporary">
+        <MudDrawer @bind-Open="@_drawerOpen" Anchor="Anchor.Start" Elevation="0" Variant="@DrawerVariant.Temporary">
             <MobileNavMenu />
         </MudDrawer>
-        <MudMainContent>
-            <MudContainer MaxWidth="MaxWidth.Large" Class="my-16 pt-16">
-                @Body
+        <MudMainContent Class="pt-3" >
+            <MudContainer MaxWidth="MaxWidth.ExtraLarge" >
+                  @Body
             </MudContainer>
         </MudMainContent>
     </MudLayout>
+    <Footer />
 </MudRTLProvider>
 @code {
     bool _drawerOpen = false;
     //public string SearchValue { get; set; }
 
     bool _isDarkMode = false;
-    private string _changeThemeShemaIcon => _isDarkMode ? Icons.Outlined.DarkMode : Icons.Outlined.LightMode;
+    private string _changeThemeShemaIcon => _isDarkMode ? Icons.Material.Outlined.DarkMode : Icons.Material.Outlined.LightMode;
     private void ToggleDark() => _isDarkMode = !_isDarkMode;
 
     void DrawerToggle()

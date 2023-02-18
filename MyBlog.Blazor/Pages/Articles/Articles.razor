@@ -1,0 +1,57 @@
+﻿@page "/Articles"
+
+<PageTitle>مقالات</PageTitle>
+<MudCarousel Class="mud-width-full rounded-lg" Style="height:300px;" ShowArrows="true" AutoCycle="true" TData="object">
+    <MudCarouselItem Transition="Transition.Fade" Color="@Color.Primary">
+        <div class="d-flex" style="height:100%">
+            <MudIcon Class="mx-auto my-auto" Icon="@Icons.Custom.Brands.MudBlazor" Size="@Size.Large" />
+        </div>
+    </MudCarouselItem>
+    <MudCarouselItem Transition="Transition.Fade" Color="@Color.Secondary">
+        <div class="d-flex" style="height:100%">
+            <MudIcon Class="mx-auto my-auto" Icon="@Icons.Custom.Brands.MudBlazor" Size="@Size.Large" />
+        </div>
+    </MudCarouselItem>
+</MudCarousel>
+<MudGrid Class="mt-5">
+    <MudItem xs="12" sm="2">
+        <MudTreeView T="string">
+            <MudTreeViewItem Value='"All Mail"' Icon="@Icons.Material.Filled.Email" />
+            <MudTreeViewItem Value='"Drafts"' Icon="@Icons.Material.Filled.Drafts" />
+            <MudTreeViewItem Value='"Orders"' Icon="@Icons.Material.Filled.Label" IconColor="Color.Success" />
+            <MudTreeViewItem Value='"Categories"' Icon="@Icons.Material.Filled.Label" IconColor="Color.Error" ExpandedIcon="@Icons.Material.Filled.ArrowRight">
+                <MudTreeViewItem Value='"Social"' Icon="@Icons.Material.Filled.Group" />
+                <MudTreeViewItem Value='"Updates"' Icon="@Icons.Material.Filled.Info" IconColor="Color.Warning" />
+                <MudTreeViewItem Value='"Forums"' Icon="@Icons.Material.Filled.QuestionAnswer" />
+                <MudTreeViewItem Value='"Spam"' Icon="@Icons.Material.Filled.LocalOffer" />
+            </MudTreeViewItem>
+            <MudTreeViewItem Value='"Trash"' Icon="@Icons.Material.Filled.Delete" />
+        </MudTreeView>
+    </MudItem>
+    <MudItem xs="12" sm="10">
+        <MudGrid>
+            @for (int i = 0; i < 12; i++)
+            {
+                <MudItem xs="12" sm="3">
+                    <MudCard Class="rounded-lg">
+                        <MudSkeleton SkeletonType="SkeletonType.Rectangle" Height="200px" class="rounded-t-lg" />
+                        <MudCardContent>
+                            <MudSkeleton Width="30%" Height="42px;" />
+                            <MudSkeleton Width="80%" />
+                            <MudSkeleton Width="100%" />
+                        </MudCardContent>
+                        <MudCardActions>
+                            <MudSkeleton Width="64px" Height="40px" Class="ml-2" />
+                            <MudSkeleton Width="105px" Height="40px" Class="ml-3" />
+                        </MudCardActions>
+                    </MudCard>
+                </MudItem>
+            }
+        </MudGrid>
+
+    </MudItem>
+</MudGrid>
+@code {
+
+
+}
